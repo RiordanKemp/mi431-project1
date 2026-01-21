@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8949025546408746587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8949025546408746564}
+  - component: {fileID: 8949025546408746565}
+  m_Layer: 0
+  m_Name: Text Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8949025546408746564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949025546408746587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8949025546408746565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949025546408746587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a3ab215cd55ff4793a8f6e3fc56613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCanvas: {fileID: 0}
+  characterNameText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  characterPortrait: {fileID: 0}
+  conversations:
+  - dialogues:
+    - newNameStr: Nickname!
+      newPortrait: {fileID: 0}
+      dialogueStr: I am a person saying something.
+    - newNameStr: 
+      newPortrait: {fileID: 21300000, guid: 17c892aa664e47d4dad3f8e41dfda505, type: 3}
+      dialogueStr: I am the same person, but an apple
+    - newNameStr: New nickname!
+      newPortrait: {fileID: 0}
+      dialogueStr: New person now.
+  - dialogues:
+    - newNameStr: A brand new guy
+      newPortrait: {fileID: 0}
+      dialogueStr: The apple sprite should still be here from last time.
+    - newNameStr: 
+      newPortrait: {fileID: 0}
+      dialogueStr: Despite only having new dialogue, name and image should remain
+        the same.
+  dialogueLength: -1
