@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
 
 [Header("Inscribed")]
+    public ParticleSystem dust;
     public bool isActive = true;
     public float speed = 8;
     public KeyCode interactKey = KeyCode.E;
@@ -114,7 +115,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (nextLevel){return;}
@@ -274,6 +274,11 @@ public class PlayerController : MonoBehaviour
         if (hAxis < 0){
             this.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
         }
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 
 //accessed by player health
