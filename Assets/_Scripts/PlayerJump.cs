@@ -145,13 +145,14 @@ public class PlayerJump : MonoBehaviour
     }
 
     void Jump(){
-        //print("jump func");
-    playerRigid.AddForce(new Vector2(0, jumpPower));
-    jumpsLeft -= 1;
-    remainingBuffer = 0;
-    bufferedJump = false;
+        
+        playerRigid.AddForce(new Vector2(0, jumpPower));
+        jumpsLeft -= 1;
+        remainingBuffer = 0;
+        bufferedJump = false;
 
-    heldJumpDuration = maxHoldJumpDuration;
+        heldJumpDuration = maxHoldJumpDuration;
+        pcScript.CreateDust(particleCount: 30);
     }
 
     void BufferJump(){

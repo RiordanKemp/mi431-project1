@@ -33,6 +33,9 @@ ___Did you get help from any AI Code Assistants? (Tell us which .cs file to look
 ___Did you get help from any online websites, videos, or tutorials? (link them here)___
 https://www.youtube.com/watch?v=P_6W-36QfLA
 
+PARTICLE SYSTEM TUTORIAL: https://www.youtube.com/watch?v=1CXVbCbqKyg
+EDIT EMISSION: https://discussions.unity.com/t/how-do-you-change-a-particle-systems-emission-rate-over-time-in-script/775702/3
+
 
 
 ___What trouble did you have with this project?___

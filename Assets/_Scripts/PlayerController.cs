@@ -130,16 +130,18 @@ public class PlayerController : MonoBehaviour
         }
 
         float hAxis = 0;
-       if (Input.GetKey(settingsManager.controls["right"])){
-        hAxis += 1;
-       }
+
+        if (Input.GetKey(settingsManager.controls["right"])){
+            hAxis += 1;
+        }
         if (Input.GetKey(settingsManager.controls["left"])){
             hAxis -= 1;
         }
         
         RotatePlayer(hAxis);
-        if (holdingChain) hAxis = 0;
 
+        // While holding a chain, the player can rotate but not move via inputs
+        if (holdingChain) hAxis = 0;
         float rigidVelX = speed * hAxis;
         
 
@@ -154,23 +156,19 @@ public class PlayerController : MonoBehaviour
         else{
             holdVel.x = playerRigid.velocity.x;
         }
-        //holdVel.x = Mathf.Clamp(holdVel.x, -6, 6);
 
         if (hAxis == 0){
             holdVel.x = Mathf.MoveTowards(holdVel.x, 0, 0.5f);
         }
 
-        
         //limit the maximum vertical velocity
         holdVel.y = Mathf.Clamp(playerRigid.velocity.y, -maxVerticalSpeed, maxVerticalSpeed);
 
         //decelerate the player at the top of their fall
         if (-5 < playerRigid.velocity.y && playerRigid.velocity.y < 0){
-            print("player is at the top of their fall");
             holdVel.y = Mathf.Lerp(playerRigid.velocity.y, -5, 0.5f);
         }
 
-        //holdVel.x = 0;
         playerRigid.velocity = holdVel;
 
         //if the player is in the collider of a chain, check if the player is holding
@@ -188,7 +186,6 @@ public class PlayerController : MonoBehaviour
             playerRigid.velocity = holdVel;
 
             if (!nearChain || !holdingChainKey){
-                if (!nearChain){print("NearChain is false");}
                 ReleaseChain();
             }
         }
@@ -270,14 +267,21 @@ public class PlayerController : MonoBehaviour
     void RotatePlayer(float hAxis){
         if (hAxis > 0){
             this.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+            
         }
         if (hAxis < 0){
             this.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+            
         }
     }
 
-    void CreateDust()
+    public void CreateDust(int particleCount = 15)
     {
+        var emission = dust.emission;
+        emission.SetBursts(new[]
+                               {
+                                   new ParticleSystem.Burst(0f, particleCount), //float_time, short_count
+                               });
         dust.Play();
     }
 
