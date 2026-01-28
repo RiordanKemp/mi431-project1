@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour
         var emission = dust.emission;
         emission.SetBursts(new[]
                                {
-                                   new ParticleSystem.Burst(0f, particleCount), //float_time, short_count
+                                   new ParticleSystem.Burst(0, particleCount), //float_time, short_count
                                });
         dust.Play();
     }
