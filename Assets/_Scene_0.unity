@@ -7808,6 +7808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dust: {fileID: 575096799}
+  jumpScript: {fileID: 441469015}
   isActive: 1
   speed: 8
   interactKey: 101

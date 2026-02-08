@@ -20,6 +20,7 @@ public class PlayerJump : MonoBehaviour
     public float holdingJumpPower = 50;
     [Header("Dynamic")]
     [SerializeField] int jumpsLeft = 0;
+    public int JumpsLeft => jumpsLeft;
     [SerializeField] Rigidbody2D playerRigid;
     [SerializeField] float remainingBuffer = 0;
     [SerializeField] PlayerController pcScript;

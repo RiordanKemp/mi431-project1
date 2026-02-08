@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
 [Header("Inscribed")]
     public ParticleSystem dust;
+    public PlayerJump jumpScript;
     public bool isActive = true;
     public float speed = 8;
     public KeyCode interactKey = KeyCode.E;
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 holdVel = Vector2.zero;
 
-        //print("rigid vel x:" + rigidVelX);
+        
 
         //decelerate towards a steady speed, or 0 if there isnt any input
         if (playerRigid.velocity.x < 6 && playerRigid.velocity.x > -6){
@@ -167,6 +168,15 @@ public class PlayerController : MonoBehaviour
         //decelerate the player at the top of their fall
         if (-5 < playerRigid.velocity.y && playerRigid.velocity.y < 0){
             holdVel.y = Mathf.Lerp(playerRigid.velocity.y, -5, 0.5f);
+        }
+
+
+        // Particles for abruptly changing direction
+        if (hAxis > 0 && playerRigid.velocity.x <= -5 ||
+            hAxis < 0 && playerRigid.velocity.x >= 5)
+        {
+            
+            if (jumpScript.JumpsLeft != 0) CreateDust(particleCount: 20);
         }
 
         playerRigid.velocity = holdVel;
@@ -275,13 +285,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void CreateDust(int particleCount = 15)
+    public void CreateDust(int particleCount = 15, float duration = 0)
     {
         var emission = dust.emission;
+
+        if (duration == 0)
+        {
         emission.SetBursts(new[]
                                {
                                    new ParticleSystem.Burst(0, particleCount), //float_time, short_count
                                });
+        }
+
+        else
+        {
+            dust.duration = duration;
+        }
+
         dust.Play();
     }
 
