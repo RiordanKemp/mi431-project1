@@ -147,6 +147,7 @@ MonoBehaviour:
   _snapType: 1
   interactBufferTime: 0
   instantiateParticlesGO: {fileID: 4268795766493771826, guid: 36a86a9d62d4c36478a410a4bae365e3, type: 3}
+  playerParticles: {fileID: 1627612100314826860, guid: 3a318f35f34de2146a37afe412f96300, type: 3}
   cameraEffects:
     _camEffectType: 0
     effectDuration: 0.5

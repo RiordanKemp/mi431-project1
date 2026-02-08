@@ -21775,6 +21775,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2091877425}
     m_Modifications:
     - target: {fileID: 6282604969964510551, guid: 2d2921c68a5122645a43da100c1ad9de, type: 3}
+      propertyPath: playerParticles
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282604969964510551, guid: 2d2921c68a5122645a43da100c1ad9de, type: 3}
       propertyPath: cameraEffects.uiGO
       value: 
       objectReference: {fileID: 787206672}

@@ -14,6 +14,7 @@ public class SnapInteractable : MonoBehaviour
     public eSnapType _snapType = eSnapType.upClick;
     public float interactBufferTime = 0.05f;
     public GameObject instantiateParticlesGO;
+    public GameObject playerParticles;
     public CameraEffectType cameraEffects;
     public Transform teleportLocation;
 
@@ -108,7 +109,7 @@ public class SnapInteractable : MonoBehaviour
             playerRigid.velocity = new Vector2(playerRigid.velocity.x, snapForce);
             }
          //playerRigid.AddForce(new Vector2(playerRigid.velocity.x, snapForce));
-            StartCooldown();
+            StartCooldown(pTransform: playerRigid.transform);
         }
 
         void ClickDown(){
@@ -122,7 +123,7 @@ public class SnapInteractable : MonoBehaviour
             }
         //}
             //playerRigid.AddForce(new Vector2(playerRigid.velocity.x, -snapForce));
-            StartCooldown();
+            StartCooldown(pTransform: playerRigid.transform);
         }
 
         void ClickVent(){
@@ -136,7 +137,7 @@ public class SnapInteractable : MonoBehaviour
 
         
 
-        void StartCooldown(){
+        void StartCooldown(Transform pTransform = null){
             cooldownActive = true;
             cooldownTimer = cooldown;
             objectLight.intensity = 0.1f;
@@ -145,6 +146,13 @@ public class SnapInteractable : MonoBehaviour
             if (instantiateParticlesGO == null) return;
             GameObject particlesGO = Instantiate<GameObject>(instantiateParticlesGO);
             particlesGO.transform.position = transform.position;
+
+            if (pTransform == null) return;
+            GameObject particles = Instantiate<GameObject>(playerParticles);
+            particles.transform.position = pTransform.position;
+
+            TrackObject TO = particles.GetComponent<TrackObject>();
+            TO.target = pTransform;
         }
 
         void EndCooldown(){
