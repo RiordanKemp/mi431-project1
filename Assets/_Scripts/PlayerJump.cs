@@ -139,10 +139,14 @@ public class PlayerJump : MonoBehaviour
             normalizeVec = new Vector2(hAxis * leapStrength * 2, leapStrength / 4);
         }
         playerRigid.AddForce(normalizeVec);
-        //playerRigid.velocity = new Vector2(-10000, 10000);
 
         GameObject particles = Instantiate<GameObject>(leapParticles);
         particles.transform.position = transform.position;
+        particles.transform.rotation = transform.rotation.y == -1 ?
+        Quaternion.Euler(0, 0, 180) : Quaternion.identity;
+
+        TrackObject TO = particles.GetComponent<TrackObject>();
+        TO.target = transform;
     }
 
     void Jump(){

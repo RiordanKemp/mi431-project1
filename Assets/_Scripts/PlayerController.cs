@@ -305,7 +305,6 @@ public class PlayerController : MonoBehaviour
 
         else
         {
-            Debug.LogWarning("Called persistent Create Dust");
             emission.rateOverTime = particleCount;
             emission.SetBursts(new[]
                                {
