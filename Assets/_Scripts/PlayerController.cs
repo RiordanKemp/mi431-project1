@@ -170,13 +170,17 @@ public class PlayerController : MonoBehaviour
             holdVel.y = Mathf.Lerp(playerRigid.velocity.y, -5, 0.5f);
         }
 
+        if (Mathf.Abs(holdVel.x) >= 4.5 && jumpScript.JumpsLeft > 0)
+        {
+            CreateDust(particleCount: 80, persistent: true);
+        }
 
         // Particles for abruptly changing direction
-        if (hAxis > 0 && playerRigid.velocity.x <= -5 ||
-            hAxis < 0 && playerRigid.velocity.x >= 5)
+        if (hAxis >= 0 && playerRigid.velocity.x <= -4.5f ||
+            hAxis <= 0 && playerRigid.velocity.x >= 4.5f)
         {
             
-            if (jumpScript.JumpsLeft != 0) CreateDust(particleCount: 20);
+            if (jumpScript.JumpsLeft > 0) CreateDust(particleCount: 40);
         }
 
         playerRigid.velocity = holdVel;
@@ -285,24 +289,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void CreateDust(int particleCount = 15, float duration = 0)
+    public void CreateDust(int particleCount = 15, bool persistent = false)
     {
+        
         var emission = dust.emission;
 
-        if (duration == 0)
+        if (!persistent)
         {
         emission.SetBursts(new[]
                                {
                                    new ParticleSystem.Burst(0, particleCount), //float_time, short_count
                                });
+        
         }
 
         else
         {
-            dust.duration = duration;
+            Debug.LogWarning("Called persistent Create Dust");
+            emission.rateOverTime = particleCount;
+            emission.SetBursts(new[]
+                               {
+                                   new ParticleSystem.Burst(0, 0), // Reset burst
+                               });
         }
 
         dust.Play();
+
+        
     }
 
 //accessed by player health

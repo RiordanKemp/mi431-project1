@@ -35,8 +35,9 @@ https://www.youtube.com/watch?v=P_6W-36QfLA
 
 PARTICLE SYSTEM TUTORIAL: https://www.youtube.com/watch?v=1CXVbCbqKyg
 EDIT EMISSION: https://discussions.unity.com/t/how-do-you-change-a-particle-systems-emission-rate-over-time-in-script/775702/3
+EDIT EMISSION: https://discussions.unity.com/t/using-a-burst-in-a-script/203938
 
-
+EDIT DURATION: https://discussions.unity.com/t/setting-duration-through-script-for-particlesystem/679832
 
 ___What trouble did you have with this project?___
 
